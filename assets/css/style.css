@@ -40,12 +40,66 @@ body {
 }
 
 button {
-    padding: 20px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-weight: 600;
+  padding: 20px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
 }
 
+button:hover {
+  background: #2d3748;
+  color: #fff;
+}
+
+button.active {
+  transform: scale(0.95);
+}
+
+.numero {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.numero:hover {
+  background: #cbd5e0;
+}
+
+.operador {
+  background: #667eea;
+  color: #fff;
+}
+
+.operador:hover {
+  background: #5568d3;
+}
+
+.igual {
+  background: #48bb78;
+  color: #fff;
+  grid-column: span 2;
+}
+
+.igual:hover {
+  background: #38a169;
+}
+
+.limpar {
+  background: #f56565;
+  color: #fff;
+}
+
+.limpar:hover {
+  background: #e53e3e;
+}
+
+.apagar {
+  background: #ed8936;
+  color: #fff;
+}
+
+.apagar:hover {
+  background: #dd6b20;
+}
