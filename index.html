@@ -10,11 +10,34 @@
     <div class="calculadora">
       <div class="display" id="display">0</div>
       <div class="botoes">
+        <!-- Botões De operação -->
         <button class="limpar" onclick="limpar()">C</button>
         <button class="apagar" onclick="apagar()">⌫</button>
         <button class="operador" onclick="adicionarCaractere('/')">/</button>
         <button class="operador" onclick="adicionarCaractere('*')">*</button>
+
+        <button class="numero" onclick="adicionarCaractere('7')">7</button>
+        <button class="numero" onclick="adicionarCaractere('8')">8</button>
+        <button class="numero" onclick="adicionarCaractere('9')">9</button>
+        <button class="operador" onclick="adicionarCaractere('-')">-</button>
       </div>
+
+        <button class="numero" onclick="adicionarCaractere('4')">4</button>
+        <button class="numero" onclick="adicionarCaractere('5')">5</button>
+        <button class="numero" onclick="adicionarCaractere('6')">6</button>
+        <button class="operador" onclick="adicionarCaractere('+')">+</button>
+      </div>
+
+        <button class="numero" onclick="adicionarCaractere('1')">1</button>
+        <button class="numero" onclick="adicionarCaractere('2')">2</button>
+        <button class="numero" onclick="adicionarCaractere('3')">3</button>
+        <button class="operador" onclick="adicionarCaractere('%')">%</button>
+      </div>
+
+      
+        <button class="numero" onclick="adicionarCaractere('0')">0</button>
+        <button class="numero" onclick="adicionarCaractere('.')">.</button>
+      <button class="igual" onclick="calcular()">=</button>
     </div>
 
     <script src="assets/js/main.js"></script>
