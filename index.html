@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <h1>Calculadora</h1>
+    <div class="calculadora">
+      <div class="display" id="display">0</div>
+      <div class="botoes">
+        <button class="limpar" onclick="limpar()">C</button>
+        <button class="apagar" onclick="apagar()">⌫</button>
+        <button class="operador" onclick="adicionarCaractere('/')">/</button>
+        <button class="operador" onclick="adicionarCaractere('*')">*</button>
+      </div>
+    </div>
 
     <script src="assets/js/main.js"></script>
   </body>
