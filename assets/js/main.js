@@ -29,7 +29,7 @@ function adicionarCaractere(caractere) {
   const ultimoEhOperador = ["+", "-", "*", "/", "%"].includes(ultimoCaractere);
 
   // Impede operador no inicio (exceto se display for '0' e for operador de subtração)
-  if (displayValor === "0" && ehOperador && caractere === "-") {
+  if (displayValor === "0" && ehOperador && caractere !== "-") {
     return;
   }
 
@@ -43,9 +43,9 @@ function adicionarCaractere(caractere) {
 
   // Impede dois operadores consecutivos (exceto '-' após outro operador para números negativos)
   if (ehOperador && ultimoEhOperador) {
-    if( caractere === '-' && ultimoCaractere === '-'){
-      // Permite '-' após outro operador para números negativos 
-      displayValor += caractere;
+    if (caractere === "-" && ultimoCaractere === "-") {
+      // Permite '-' após outro operador para números negativos
+      displayValor = displayValor.slice(0, -1) + caractere;
       atualizarDisplay();
       return;
     } else {
@@ -55,6 +55,31 @@ function adicionarCaractere(caractere) {
       return;
     }
   }
+
+  // Se está aguardando novo número, substitui o display
+  if (aguardandoNovoNumero) {
+    if (caractere === ".") {
+      displayValor = "0";
+    } else if (ehOperador) {
+      displayValor += caractere;
+    } else {
+      displayValor = caractere;
+    }
+    aguardandoNovoNumero = false;
+  } else {
+    // Se o display é '0' e não um ponto ou operador, substitui
+    if (displayValor === "0" && caractere !== "." && !ehOperador) {
+      displayValor = caractere;
+    } else {
+      // Não permite múltiplos pontos decimais no mesmo número
+      const ultimoNumero = displayValor.split(/[\+\-\*\/\%]/).pop();
+      if (caractere === "." && ultimoNumero.includes(".")) {
+        return;
+      }
+      displayValor += caractere;
+    }
+  }
+  atualizarDisplay();
 }
 
 function calcular() {
