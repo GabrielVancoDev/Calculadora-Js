@@ -32,6 +32,29 @@ function adicionarCaractere(caractere) {
   if (displayValor === "0" && ehOperador && caractere === "-") {
     return;
   }
+
+  // Permite '-' no inicio para números negativos
+  if (displayValor === "0" && caractere === "-") {
+    displayValor = "-";
+    aguardandoNovoNumero = false;
+    atualizarDisplay();
+    return;
+  }
+
+  // Impede dois operadores consecutivos (exceto '-' após outro operador para números negativos)
+  if (ehOperador && ultimoEhOperador) {
+    if( caractere === '-' && ultimoCaractere === '-'){
+      // Permite '-' após outro operador para números negativos 
+      displayValor += caractere;
+      atualizarDisplay();
+      return;
+    } else {
+      // Substitui o ultimo operador pelo novo
+      displayValor = displayValor.slice(0, -1) + caractere;
+      atualizarDisplay();
+      return;
+    }
+  }
 }
 
 function calcular() {
