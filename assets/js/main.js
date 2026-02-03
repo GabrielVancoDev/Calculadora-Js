@@ -13,6 +13,7 @@ function limpar() {
   atualizarDisplay();
 }
 
+// Apaga o ultimo caractere
 function apagar() {
   if (displayValor.length > 1) {
     displayValor = displayValor.slice(0, -1);
@@ -23,30 +24,14 @@ function apagar() {
 }
 
 function adicionarCaractere(caractere) {
-  // Se está aguardando novo númrero, substitui o display
-  if (aguardandoNovoNumero) {
-    if (caractere === ".") {
-      displayValor = "0.";
-    } else if (["+", "*", "/", "%"].includes(caractere)) {
-      displayValor += caractere;
-    } else {
-      displayValor = false;
-    }
-    aguardandoNovoNumero = false;
-  } else {
-    // Se o display é '0' e não é um ponto, substitui
-    if (displayValor === "0" && caractere !== ".") {
-      displayValor = caractere;
-    } else {
-      // Não permite múltiplos pontos decimais no mesmo número
-      const ultimoNumero = displayValor.split(/[\+\*\%\/]/).pop();
-      if (caractere === "." && ultimoNumero.includes(".")) {
-        return;
-      }
-      displayValor += caractere;
-    }
+  const ehOperador = ["+", "-", "*", "/", "%"].includes(caractere);
+  const ultimoCaractere = displayValor[displayValor.length - 1];
+  const ultimoEhOperador = ["+", "-", "*", "/", "%"].includes(ultimoCaractere);
+
+  // Impede operador no inicio (exceto se display for '0' e for operador de subtração)
+  if (displayValor === "0" && ehOperador && caractere === "-") {
+    return;
   }
-  atualizarDisplay();
 }
 
 function calcular() {
@@ -71,3 +56,26 @@ function calcular() {
     }, 1500);
   }
 }
+
+// Suporte para teclado
+document.addEventListener("keydown", function (evento) {
+  const tecla = evento.key;
+
+  if ((tecla >= "0" && tecla <= "9") || tecla === ".") {
+    adicionarCaractere(tecla);
+  } else if (
+    tecla === "+" ||
+    tecla === "-" ||
+    tecla === "*" ||
+    tecla === "/" ||
+    tecla === "%"
+  ) {
+    adicionarCaractere(tecla);
+  } else if (tecla === "Enter" || tecla === "=") {
+    calcular();
+  } else if (tecla === "Backspace") {
+    apagar();
+  } else if (tecla === "Escape" || tecla === "c" || tecla === "C") {
+    limpar();
+  }
+});
