@@ -1,120 +1,69 @@
-# Calculadora-Js
+# Calculadora em JavaScript - Lógica Matemática
 
-Este projeto consiste em uma calculadora desenvolvida em JavaScript puro, com suporte a cliques e teclado, focada em lógica matemática, controle de estado e validações, sem dependências externas.
+Este projeto consiste em uma **calculadora desenvolvida em Java Script puro**, com suporte a **cliques no teclado**, focada em **lógica matemática**, controle de estado e validações.
 
-O objetivo principal do projeto é demonstrar domínio de lógica de programação, manipulação de eventos e controle de fluxo, simulando o comportamento de uma calculadora real.
+---
 
-🚀 Funcionalidades
+## 🚀 Funcionalidades
 
-Operações básicas:
-➕ Adição
-➖ Subtração
-✖️ Multiplicação
-➗ Divisão
-➗ Porcentagem
+- Operações básicas:
+  - ➕ Adição
+  - ➖ Subtração
+  - ✖️ Multiplicação
+  - ➗ Divisão
+  - ➗ Porcentagem
 
-Suporte a:
+  - Recursos Adicionais:
+    - Entrada de **botões**
+    - Entrada por **teclado**
+    - Suporte a números decimais
+    - Apagar último caractere (backspace)
+    - Limpar Cálculo (AC)
+    - Tratamento de Erros Matemáticos
 
-Entrada via botões
+---
 
-Entrada via teclado
+## 🧠 Lógica de Funcionamento
 
-Números decimais
+A calculadora funciona a partir de **controle de estado**, simulando o raciocínio matemático humano.
 
-Apagar último caractere (Backspace)
+### Estados principais
 
-Limpar cálculo (AC)
+- **displayValor**  
+  Representa o valor ou expressão exibida no visor.
 
-Tratamento de erros matemáticos
+- **operador**  
+  Define qual operação matemática será executada.
 
-🧠 Lógica de Funcionamento
+- **aguardandoNovoNumero**  
+  Controla quando o próximo número digitado deve substituir o valor atual após um cálculo.
 
-A calculadora funciona a partir de controle de estado, simulando o raciocínio matemático humano:
+### Fluxo matemático
 
-Estados principais:
+1. O usuário digita um número.
+2. Seleciona um operador matemático.
+3. Digita o próximo número.
+4. Pressiona `=` para realizar o cálculo.
+5. O resultado é exibido e a calculadora fica pronta para uma nova operação.
 
-Valor exibido (displayValor): representa a expressão ou número atual.
+---
 
-Operador ativo: define a operação matemática.
+## 🔢 Controle de Entrada Numérica
 
-Flag de controle (aguardandoNovoNumero): determina quando o próximo número deve substituir o display após um cálculo.
+- Evita múltiplos pontos decimais no mesmo número.
+- Impede expressões inválidas.
+- Atualiza o display dinamicamente a cada interação.
 
-Fluxo matemático simplificado:
+---
 
-O usuário digita um número.
+## 🧮 Cálculo Matemático
 
-Seleciona um operador matemático.
+Antes de calcular, o sistema:
 
-Digita o próximo número.
+- Substitui o operador visual `x` por `*`.
+- Avalia a expressão matemática.
+- Arredonda o resultado para evitar erros de ponto flutuante.
 
-Ao pressionar =, o cálculo é realizado.
-
-O resultado é exibido e o sistema se prepara para um novo cálculo.
-
-🔢 Controle de Entrada Numérica
-
-Os números são tratados de forma incremental.
-
-O sistema evita:
-
-Múltiplos pontos decimais no mesmo número.
-
-Expressões inválidas (ex: 5++2).
-
-O display é atualizado dinamicamente a cada interação.
-
-🧮 Cálculo Matemático
-
-O cálculo final é realizado avaliando a expressão matemática construída pelo usuário.
-
-Antes da avaliação:
-
-O operador visual x é convertido para \*.
-
-O resultado é arredondado para evitar problemas com números de ponto flutuante.
-
-resultado = Math.round(resultado \* 1000000) / 1000000;
-
-⌨️ Suporte ao Teclado
-
-A calculadora aceita entrada direta pelo teclado:
-
-Tecla Ação
-0–9 Números
-. Decimal
-
-- - - / % Operadores
-      Enter / = Calcular
-      Backspace Apagar
-      Esc / C Limpar
-      🛡️ Tratamento de Erros
-
-Expressões inválidas exibem "Erro" no display.
-
-Após o erro, o sistema é resetado automaticamente.
-
-Evita travamentos e mantém a experiência do usuário fluida.
-
-🛠️ Tecnologias Utilizadas
-
-JavaScript (ES6)
-
-HTML5
-
-CSS3
-
-Manipulação de DOM
-
-Eventos de teclado (keydown)
-
-📌 Objetivo do Projeto
-
-Este projeto foi desenvolvido com foco em:
-
-Aprimorar lógica matemática
-
-Fortalecer fundamentos de JavaScript
-
-Simular comportamento de sistemas reais
-
-Servir como projeto de portfólio
+```js
+resultado = Math.round(resultado * 1000000) / 1000000;
+```
