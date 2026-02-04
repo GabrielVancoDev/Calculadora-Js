@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #434a69 0%, #17121b 100%);
+  background: linear-gradient(135deg, #1c1c1c 0%, #17121b 100%);
   font-family: "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
@@ -48,6 +48,7 @@ button {
   cursor: pointer;
   transition: all 0.2s;
   font-weight: 600;
+
 }
 
 button:hover {

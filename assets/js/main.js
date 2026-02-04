@@ -79,6 +79,12 @@ function adicionarCaractere(caractere) {
       displayValor += caractere;
     }
   }
+
+  // Lógica de calculo de porcentagem
+  if (caractere === "%") {
+    const porcentagem = parseFloat(displayValor);
+    displayValor = (porcentagem / 100).toString();
+  }
   atualizarDisplay();
 }
 
@@ -127,3 +133,5 @@ document.addEventListener("keydown", function (evento) {
     limpar();
   }
 });
+
+
